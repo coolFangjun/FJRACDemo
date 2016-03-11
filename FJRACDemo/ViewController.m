@@ -71,6 +71,20 @@
     }];
     
     
+    RACSignal *postSignal = [RACSignal combineLatest:@[textSignal] reduce:^id(NSNumber *valid){
+        
+        return valid;
+        
+        
+    }];
+    
+    
+    [postSignal  subscribeNext:^(NSNumber *postActive) {
+       
+        
+        postBtn.enabled = [postActive boolValue];
+        
+    }];
     
 }
 
